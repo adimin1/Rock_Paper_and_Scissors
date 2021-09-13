@@ -25,8 +25,6 @@ loop do
         resultado = 2 - rand(1..3) 
     when 0
         break
-    else
-    puts Rainbow('resultado invalido').red
   end
   system 'clear'
     if resultado == 1
@@ -40,6 +38,8 @@ loop do
     elsif resultado == -1
     puts Rainbow('você perdeu').red
     c += 1
+  else
+    puts Rainbow('resultado invalido').red
     end
     puts "Vitorias:#{a}\n Empates:#{b}\n Derrotas:#{c}" 
 end
