@@ -3,13 +3,13 @@ a = 0
 b = 0
 c = 0
 loop do
-  puts "escolha um dos numeros \n\ 1-tesoura \n\ 2-papel \n\ 3-papel \n\ 0-sair \n"
+  puts "escolha um dos numeros \n\ 1-tesoura \n\ 2-papel \n\ 3-pedra \n\ 0-sair \n"
   print 'opções:'
-    opçãoes = gets.chomp.to_i
+    opções = gets.chomp.to_i
 
-    case opçãoes
+    case opções
     when 1
-        tesora = 2
+        tesoura = 2
         papel = 1 
         pedra = 3 
         resultado = 2 - rand(1..3)
@@ -20,7 +20,7 @@ loop do
         resultado = 2 - rand(1..3)
     when 3 
         pedra = 2
-        tesora = 1
+        tesoura = 1
         papel = 3
         resultado = 2 - rand(1..3) 
     when 0
