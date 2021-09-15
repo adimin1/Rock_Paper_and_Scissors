@@ -1,45 +1,40 @@
 require 'rainbow'
-a = 0
-b = 0
-c = 0
+victories = 0
+draws = 0
+defeats = 0
 loop do
-  puts "escolha um dos numeros \n\ 1-tesoura \n\ 2-papel \n\ 3-pedra \n\ 0-sair \n"
-  print 'opções:'
-    opções = gets.chomp.to_i
+  puts "choose one of the objects\ns-scissors\np-paper\nr-rock"
+  print 'option:'
+  pc = 'srp'[rand(3)]
+  player = gets.chomp
 
-    case opções
-    when 1
-        tesoura = 2
-        papel = 1 
-        pedra = 3 
-        resultado = 2 - rand(1..3)
-    when 2
-        papel = 2
-        tesoura = 3
-        pedra = 1
-        resultado = 2 - rand(1..3)
-    when 3 
-        pedra = 2
-        tesoura = 1
-        papel = 3
-        resultado = 2 - rand(1..3) 
-    when 0
-        break
+ case [player, pc]
+  
+  when ['r','s'], ['s','p'], ['p','r']
+    puts "You chose #{player}, PC chose #{pc}"
+    puts Rainbow("You win").green
+    victories += 1
+
+  when ['r','r'], ['s','s'], ['p','p']
+    puts "You chose #{player}, PC chose #{pc}"
+    puts Rainbow('Draws').cyan
+    draws += 1
+
+  when ['s','r'], ['p','s'], ['r','p']
+    puts "You chose #{player}, PC chose #{pc}"
+    puts Rainbow('You lost').red
+    defeats += 1
   end
-  system 'clear'
-    if resultado == 1
-      puts Rainbow('Você venceu').green
-      a += 1
 
-    elsif resultado == 0
-    puts Rainbow('Empatou').cyan
-    b += 1
+  puts "do you wish to continue? \n1-yes\n2-no"
+  continue = gets.chomp.to_i
 
-    elsif resultado == -1
-    puts Rainbow('você perdeu').red
-    c += 1
-  else
-    puts Rainbow('resultado invalido').red
-    end
-    puts "Vitorias:#{a}\n Empates:#{b}\n Derrotas:#{c}" 
+  case continue
+  when 1
+    system 'clear'
+
+  when 2
+    puts "Victories:#{victories}\ndraws:#{draws}\nDefeats:#{defeats}" 
+    break
+  end
 end
